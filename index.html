@@ -5,11 +5,121 @@
 
         <h2>Final State</h2>
 
+            <p>
+                The goal of my project was to create a maze where all of the walls, floor, and ceiling were white, meaning the user could not see where they were.  In order to navigate the maze, the user would be able to shoot shoot black particles which will stick to the surfaces of the maze and they can use the arrow keys to navigate to the exit.  I also wanted to be able to generate a different maze each time so the user could have a new experience every time they played.  The user starts in the top-left corner of an orthogonal maze and can use the arrow keys and WASD keys to navigate.  The user can also press the space bar to shoot particles in the diection they are facing.  Once the user finds the exit, they realize that the maze was just a large room and the outside of the room is very beautiful.
+            </p>
+
+
         <h2>Initial Sketch</h2>
+
+
 
         <h2>Algorithms and Approaches</h2>
 
             <h3>Maze Generation</h3>
+                <p>
+                    My first problem I needed to solve was randomly generating a maze.  I thought a good idea would be to have a 20 by 20 grid, and select some of those blocks to be walls, and allow the user walk and move in the spaces that weren’t walls.
+                </p>
+
+                <figure>
+                    <img src="20by20.png" alt="A 20 by 20 grid which will be the basis of my maze" width = 500 height = 500>
+                    <figcaption>A 20 by 20 grid which will be the basis of my maze</figcaption>
+                </figure>
+
+                <p>
+                    I will demonstrate further with an 8 by 8 grid. 
+                    
+                    <br>
+
+                    Initially, every other row and every other column are filled in, meaning they are walls.  The user starts in the upper left corner of the grid, so that’s where our algorithm will start.  This initial cell has unvisited neighbors to the right and beneath it.  
+
+                </p>
+
+                <figure>
+                    <img src="20by20.png" alt="A 20 by 20 grid which will be the basis of my maze" width = 500 height = 500>
+                    <figcaption>A 20 by 20 grid which will be the basis of my maze</figcaption>
+                </figure>
+
+                <p>
+
+                    I will demonstrate further with an 8 by 8 grid.  
+
+                    <br>
+
+                    Initially, every other row and every other column are filled in, meaning they are walls.  The user starts in the upper left corner of the grid, so that’s where our algorithm will start.  This initial cell has unvisited neighbors to the right and beneath it.  
+
+                </p>
+
+                <figure>
+                    <img src="maze2.png.png" alt="An 8 by 8 grid where every other row and every other column are walls.  The starting cell is in the upper left, and it has a neighbor to the right and a neighbor beneath." width = 500 height = 500>
+                    <figcaption>An 8 by 8 grid where every other row and every other column are walls.  The starting cell is in the upper left, and it has a neighbor to the right and a neighbor beneath.</figcaption>
+                </figure>
+
+                <p>
+                    The algorithm randomly selects one of these unvisited neighbors and removes the wall between itself and that neighbor.  
+                </p>
+
+
+                <figure>
+                    <img src="maze3.png" alt="A wall between a random, unvisited neighbor is removed" width = 500 height = 500>
+                    <figcaption>A wall between a random, unvisited neighbor is removed</figcaption>
+                </figure>
+
+                <p>
+                    The algorithm performs the same actions until it reaches a state where it doesn’t have any unvisitied neighbors. 
+                </p>
+            
+                <figure>
+                    <img src="maze8.png" alt="A cell has been reached with no remaining unvisited neighbors.  The neighbor above, below, and to the right have all been visited." width = 500 height = 500>
+                    <figcaption>A cell has been reached with no remaining unvisited neighbors.  The neighbor above, below, and to the right have all been visited.</figcaption>
+                </figure>
+
+                <p>
+
+                    The algorithm then goes back to the last cell which did have unvisited neighbors and continues this process.
+                </p>
+
+                <figure>
+                    <img src="maze9.png" alt="The algorithm goes back to the last cell it visited which still has unvisited neighbors" width = 500 height = 500>
+                    <figcaption>The algorithm goes back to the last cell it visited which still has unvisited neighbors</figcaption>
+                </figure>
+
+                <p>
+                    The algorithm keeps going until all of the cells don’t have any unvisited neighbors.
+                </p>
+
+                <figure>
+                    <img src="maze20.png" alt="All of the possible cells which didn't start out as walls have been visited and can be reached from the start.  The algorithm is over." width = 500 height = 500>
+                    <figcaption>All of the possible cells which didn't start out as walls have been visited and can be reached from the start.  The algorithm is over.</figcaption>
+                </figure>
+
+                <p>
+                    Finally, I want to add an exit to the maze so I remove the right most cell on the bottom row which is connected to an open cell.
+                </p>
+
+                <figure>
+                    <img src="maze21.png" alt="Remove the wall in the cell which is furthest to the bottom right and also connected to an open cell" width = 500 height = 500>
+                    <figcaption>Remove the wall in the cell which is furthest to the bottom right and also connected to an open cell</figcaption>
+                </figure>
+
+                <p>
+                    Some examples of mazes generated from 20 by 20 grids are shown below:
+                </p>
+
+                <figure>
+                    <img src="maze_example_1.png" alt="Example result of algorithm running on 20 by 20 grid" width = 500 height = 500>
+                    <figcaption>Example result of algorithm running on 20 by 20 grid</figcaption>
+                </figure>
+                <figure>
+                    <img src="maze_example_2.png" alt="Example result of algorithm running on 20 by 20 grid" width = 500 height = 500>
+                    <figcaption>Example result of algorithm running on 20 by 20 grid</figcaption>
+                </figure>
+
+                </p>
+
+
+
+
             <h3>Particle Shooting</h3>
             <h3>User/Wall Collisions</h3>
         
