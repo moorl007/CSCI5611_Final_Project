@@ -12,6 +12,17 @@
 
         <h2>Initial Sketch</h2>
 
+            <p>
+                My final product turned out to be pretty close to what I had initially envisioned. Which is shown below:
+            </p>
+            
+            <figure>
+                <img src="initialsketch.png" alt="Proposed sketch of my final project" width = 800 height = 450>
+                <figcaption>Proposed sketch of my final project</figcaption>
+            </figure>
+
+
+
 
 
         <h2>Algorithms and Approaches</h2>
@@ -142,6 +153,54 @@
                 </p>
         
         <h2>Computational Bottlenecks</h2>
+
+                <p>
+                    The biggest limiting factor on my game was the number of particles I was able to render.  All of the particles need to be kept in memory and rendered every frame, even when they are not in the actual gameplay window.  Specifically each particle is made up of verteces, so if I could reduce the number of vertices of each particle, I could render more particles. 
+
+                    <br>
+                    <br>
+
+                    Initially I was using Processing’s built in sphere function.  Processing allows me to set the detail level of the spheres, and the default was 30.  These spheres look how one would expect a sphere to look as shown below:
+                </p>
+
+                <figure>
+                    <img src="30sphere.png" alt="Result of using Processing’s sphere built in function with a detail level of 30" width = 800 height = 450>
+                    <figcaption>Result of using Processing’s sphere built in function with a detail level of 30.  Can only render about 400 before dropping below 30FPS</figcaption>
+                </figure>
+
+                <p>
+                    However, I didn’t really care how spherical the particles actually were, so I decided to change the detail level of the spheres to 1 to see if I could render more before dropping in frames per second.  The detail 1 spheres are shown below.  
+                </p>
+
+
+                <figure>
+                    <img src="1sphere.png" alt="Result of using Processing’s sphere built in function with a detail level of 1" width = 800 height = 450>
+                    <figcaption>Result of using Processing’s sphere built in function with a detail level of 1.  Can render about 40,000 before dropping below 30 FPS</figcaption>
+                </figure>
+
+                <p>
+                    As you can see, these don’t look as much like spheres as the detail 30 spheres, but I was able to render about 40,000 spheres using detail level of 1 and only about 400 detail level 30 spheres before by frames per second dropped below 30.  I also decided to try processing’s box built in function.  The result of these particles is shown below:
+                </p>
+
+
+                <figure>
+                    <img src="boxes.png" alt="Result of using processing’s box built in function." width = 800 height = 450>
+                    <figcaption>Result of using processing’s box built in function. Can render about 25,000 before dropping below 30 fps</figcaption>
+                </figure>
+
+                <p>
+                    However, using this method resulted in being able to render 25,000 particles before dropping to 30 FPS.  The final method I attempted was to generate manual tetrahedrons which is the polyhedron with the least amount of vertices.  Using this method resulted in particles looking like this:
+                </p>
+
+
+                <figure>
+                    <img src="tets.png" alt="Result of using my own, manually built tetrahedrons" width = 800 height = 450>
+                    <figcaption>Result of using my own, manually built tetrahedrons.  Can render about 60,000 before dropping below 30 fps.</figcaption>
+                </figure>
+
+                <p>
+                    This performed better than detail 1 spheres because I was able to render 60,000 particles before dropping below 30 FPS.  I didn’t care how the particles looked, so I decided to use the tetrahedrons as they were the most efficient.  The only thing I cared about was being able to render the maximum number of particles possible before having to delete the oldest ones to make space for the new ones.  
+                </p>
 
         <h2>Feedback</h2>
 
