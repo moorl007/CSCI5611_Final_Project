@@ -107,7 +107,39 @@
 
 
             <h3>Particle Shooting</h3>
+                <p>
+                    Another problem I needed to resolve was particle shooting.  It was pretty easy to generate a particle from the user’s location and shoot in in the direction they were facing with a little randomness added.  However, in order to make the particle effective in helping the user navigate through the maze, they needed to stick to the walls, floor and ceiling.  The way I do this is by calculating the time it takes the particle to reach the nearest wall, the floor and the ceiling.  This gives three different numbers, and I return the smallest, non negative number.  This is because a negative number would mean the particle would have to travel in the opposite direction it is currently traveling, and the smallest positive number is the first furfase the particle crosses.  In each draw loop, I update how much longer each particle has left before it crosses its first collision point, and then I set the velocity of that particle to zero.  This gives the appearance that the particle is stuck where it is supposed to be.
+                </p>
+
+                <figure>
+                    <img src="stick3.png" alt="Intuition behind how I get the particles to stick to the walls when they collide" width = 800 height = 450>
+                    <figcaption>Intuition behind how I get the particles to stick to the walls when they collide</figcaption>
+                </figure>
+
             <h3>User/Wall Collisions</h3>
+
+                <p>
+                    Initially, just like how the particles were able to travel through the walls of the maze, the user was also initially able to travel through the walls of the maze.  In order to prevent this, I determine if the user is close to a cell border.  If the two cells which make up the border are not actually wall cells, then the user can pass through as expected. 
+                </p>
+
+                <figure>
+                    <img src="cellEdgeNowall.png" alt="Boundary between two cells.  Neither are wall cells so the user can pass through." width = 800 height = 450>
+                    <figcaption>Boundary between two cells.  Neither are wall cells so the user can pass through.</figcaption>
+                </figure>
+
+                <p>
+                    However, if one of the cells which make up the border is in fact a wall, then I only update the user’s position along the same axis the wall is aligned with.  
+                </p>
+
+                <figure>
+                    <img src="cellEdge.png" alt="Boundar between two cells.  One of the cells is a wall so the user will not be able to pass through" width = 800 height = 450>
+                    <figcaption>Boundar between two cells.  One of the cells is a wall so the user will not be able to pass through</figcaption>
+                </figure>
+
+                <p>
+                    This prevents the user from phasing through walls when they are walking at normal speed, but if the user pressed the shift key to move fast, then there is a chance that they will be able to pass through the wall because they are never in the zone in which the collision detection algorithm tests for.
+
+                </p>
         
         <h2>Computational Bottlenecks</h2>
 
@@ -133,8 +165,3 @@
 
     </body>
 </html>
-
-<!-- <figure>
-    <img src="flag.png" alt="A Minnesota Gopher flag blowing in the wind" width = 500 height = 500>
-    <figcaption>A Minnesota Gopher Cloth flapping in the wind</figcaption>
-</figure> -->
