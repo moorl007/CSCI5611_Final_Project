@@ -17,7 +17,7 @@
             </p>
             
             <figure>
-                <img src="initialsketch.png" alt="Proposed sketch of my final project" width = 800 height = 450>
+                <img src="initialsketch.png" alt="Proposed sketch of my final project" width = 500 height = 500>
                 <figcaption>Proposed sketch of my final project</figcaption>
             </figure>
 
@@ -164,7 +164,7 @@
                 </p>
 
                 <figure>
-                    <img src="30sphere.png" alt="Result of using Processing’s sphere built in function with a detail level of 30" width = 800 height = 450>
+                    <img src="30sphere.png" alt="Result of using Processing’s sphere built in function with a detail level of 30" width = 500 height = 500>
                     <figcaption>Result of using Processing’s sphere built in function with a detail level of 30.  Can only render about 400 before dropping below 30FPS</figcaption>
                 </figure>
 
@@ -174,7 +174,7 @@
 
 
                 <figure>
-                    <img src="1sphere.png" alt="Result of using Processing’s sphere built in function with a detail level of 1" width = 800 height = 450>
+                    <img src="1sphere.png" alt="Result of using Processing’s sphere built in function with a detail level of 1" width = 500 height = 500>
                     <figcaption>Result of using Processing’s sphere built in function with a detail level of 1.  Can render about 40,000 before dropping below 30 FPS</figcaption>
                 </figure>
 
@@ -184,7 +184,7 @@
 
 
                 <figure>
-                    <img src="boxes.png" alt="Result of using processing’s box built in function." width = 800 height = 450>
+                    <img src="boxes.png" alt="Result of using processing’s box built in function." width = 500 height = 500>
                     <figcaption>Result of using processing’s box built in function. Can render about 25,000 before dropping below 30 fps</figcaption>
                 </figure>
 
@@ -194,7 +194,7 @@
 
 
                 <figure>
-                    <img src="tets.png" alt="Result of using my own, manually built tetrahedrons" width = 800 height = 450>
+                    <img src="tets.png" alt="Result of using my own, manually built tetrahedrons" width = 500 height = 500>
                     <figcaption>Result of using my own, manually built tetrahedrons.  Can render about 60,000 before dropping below 30 fps.</figcaption>
                 </figure>
 
@@ -204,7 +204,60 @@
 
         <h2>Feedback</h2>
 
+        <p>
+            I thought people’s responses to my proposal and mid-point review were that of intrigue.  I remember when I showed how the particles shoot out to reveal the maze people were pretty impressed.  During the mid-point review, some of the aspects which weren’t worked out yet, like the user/wall collision detection, so people pointed out that I needed to solve that issue.  This was an aspect which I was planning on doing anyway.  However, some of the responses gave me some good ideas.  One idea which I implemented was to have a good way to tell when the user reached the end of the maze.  I think the exact suggestion was to make the floor of the goal cell green or something.  I wanted to take it a step further and make the maze actually have an exit.  I could then make the outside world look nice by having a plane for grass, a blue sphere for the sky, and a yellow sphere for the sun.  
+        </p>
+
+
+        <figure>
+            <img src="outsideFromIn.png" alt="View of the world outside of the maze from inside of the maze looking through the exit" width = 500 height = 500>
+            <figcaption>View of the world outside of the maze from inside of the maze looking through the exit</figcaption>
+        </figure>
+
+        <figure>
+            <img src="outside.png" alt="Scene outside of the white maze" width = 500 height = 500>
+            <figcaption>Scene outside of the white maze</figcaption>
+        </figure>
+
+
+
+
+        <p>
+            I felt myself going a little crazy being inside a white room for a long time if I could solve the maze quickly, so when I got to the outside world it is pretty satisfying.
+            <br>
+            <br>
+            Another suggestion I got was to make monsters chase you around the maze.  I wasn’t able to implement this in time for the end of the semester, but it was interesting to think about how I would've done it.  I think I would have made the monsters spheres, but I don’t know if they would be visible all the time, or if the user would need to spray particles to reveal them.  I think it would be cool to have to make the user spray particles to reveal them, and when the particles got stuck to the monsters, they would change from black to red.  This would probably add some scary moments to the game.
+        </p>
+
+        </p>
+
         <h2>State of the Art</h2>
+
+        <p>
+            My game uses a particle system to reveal the walls of the maze to the user.   In their 2021 paper, Unified particle system for multiple-fluid flow and porous material, Bo Ren, Ben Xu, and Chenfeng Li describe using a particle system to simulate interactions between multiple fluids and porous materials.  The system is based on the smoothed particle hydrodynamics (SPH) method and uses a novel virtual phase concept to avoid the need for explicit particle state tracking and runtime particle insertion/deletion.  The proposed model is flexible and stable enough to handle the complex interactions between multiple fluids and porous materials, and it can accurately represent the mass and momentum transport in the simulation space.  Where I use a particle system to aid navigation, state of the art particle systems can be a very useful tool in animation or simulation.
+        </p>
+
+        <figure>
+            <img src="stateofartParticle.png" alt="Porous material interacting with SPH fluid" width = 800 height = 350>
+            <figcaption>Porous material interacting with SPH fluid</figcaption>
+        </figure>
+
+        <p>
+            I try to keep my game interesting my regenerating a new maze each time using a random depth first search method.  In their 2020 paper, Generating Procedural Dungeons Using machine learning methods, Mariana Werneck and Esteban Clua propose a stratege for procedrually generating dungeons for video games using machine leaning techniques.  The aim is to create a more efficient and sustainable game development process by reducing costs and time through the use of procedural content generation.  The generated dungeons are intended to respect room positioning design choices and maintain the character of the game.  I found that when playing my game, there are some mazes which are quite easy to solve, and I wish they could be harder.  Part of this is because I use a random algorithm.  If I were able to train a model to generate a new maze each time,  I’m sure it would be able to make it more interesting than some of the mazes I generate with my random algorithm. 
+
+        </p>
+
+        <figure>
+            <img src="stateofartDun.png" alt="Dungeons generated with machine learning agents" width = 800 height = 350>
+            <figcaption>Dungeons generated with machine learning agents</figcaption>
+        </figure>
+
+        <p>
+            While I wasn’t able to implement any monsters which chased the user in the maze, I imagine that I would try to incorporate some kind PRM / A* algorithm to bring those monsters to the user.  In their 2022 paper, Enhancing Action Maze Video Games using Suffled frog leaping algorithm (SFLA), Dheeraj Gharde, N Suryanarayan, and V R Badri Prasad, propose using SFLA in action maze video games.  SFLA is a population-based meta heuristic algorithm developed in 2006.  SFLA is shown to to be an effective method to optimize the movements of in-game characters.
+        </p>
+
+
+        </p>
 
         <h2>Future Work</h2>
             <p>I mentioned some suggestions I received from peers which I didn’t implement.  Specifically, I’m talking about introducing monsters to the game which would try to catch the user.  One thing I would have to change in order to implement this is to change the way the maze is generated.  With the current maze generation algorithm, if the user got stuck in a dead end, and a monster cornered the user, there would be no way for the user to escape because my algorithm doesn’t produce any loops in the maze.  There would have to be a good balance between the amount of loops in the maze and the number of dead ends, because if there are too many loops then the user would be able to make thier way to the bottom right of the maze pretty easy. 
